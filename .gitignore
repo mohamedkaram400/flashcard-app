@@ -3,22 +3,50 @@
 /public/build
 /public/hot
 /public/storage
+/storage/logs/laravel.log
+/storage/framework/cache/*
+/storage/framework/views/*
+/storage/framework/sessions/*
 /storage/*.key
-/storage/pail
+.DS_Store
+/storage/.DS_Store
 /vendor
 .env
 .env.backup
 .env.production
-.phpactor.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
+auth.json
 npm-debug.log
 yarn-error.log
-/auth.json
 /.fleet
 /.idea
-/.nova
 /.vscode
-/.zed
->>>>>>> 38bb964 (Install and init project)
+docker-compose.override.yml
+/.phpintel
+app/storage/
+.history
+bootstrap/cache/
+app/.DS_Store
+app/Services/.DS_Store
+~
+/Cache
+/CachedData
+/CacheProfile
+/CodeCache
+/Crashpad
+/logs
+/Service Worker
+/Session Storage
+/Shared Dictionary
+/User
+/WebStorage
+Network Persistent State
+SharedStorage
+TransportSecurity
+bootstrap/cache/packages.php
+bootstrap/cache/services.php
+/databases
+phpunit.xml
+mechatroner.rainbow-csv
