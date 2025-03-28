@@ -16,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return DB::table('categories')->get();
+        $categories = DB::table('categories')->get();
+
+        return $this->ApiResponse('Categories Returned Successfull', 201, $categories);
     }
 
     /**
@@ -44,22 +46,22 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'subject'   => 'required|string'
         ]);
 
         $category = Category::findOrFail($id);
-        $category->update($request->subject);
+        $category->update(['subject' => $request->subject]);
         
-        return $this->ApiResponse('Category Deleted Successfull', 200, $category);
+        return $this->ApiResponse('Category Updated Successfull', 200, $category);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         Category::findOrFail($id)->delete();
 
