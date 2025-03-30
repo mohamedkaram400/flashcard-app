@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class FlashCard extends Model
@@ -26,5 +27,10 @@ class FlashCard extends Model
     public function category() : HasOne
     {
         return $this->hasOne(Category::class);
+    }
+
+    public function tags() : BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'flashcard_tag');
     }
 }

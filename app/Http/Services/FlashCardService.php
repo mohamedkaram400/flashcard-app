@@ -37,6 +37,8 @@ class FlashCardService
             'hint'        => $validData['hint'] ?? null,
         ]);
 
+        $this->AttachTags($validData, $flashCard);
+
         return $this->ApiResponse('FlashCard created successfully', 201, $flashCard);
     }
 
@@ -58,10 +60,18 @@ class FlashCardService
         $validData = array_filter($request->validated(), fn($value) => $value !== null);
 
         $flashCard->update($validData);
+        
+        $this->AttachTags($validData, $flashCard);
 
         return $this->ApiResponse('FlashCard updated successfully', 200, $flashCard);
     }
 
+    protected function AttachTags($request, $flashCard)
+    {
+        if (!empty($validData['tags'])) {
+            $flashCard->tags()->sync($request->tags);
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
