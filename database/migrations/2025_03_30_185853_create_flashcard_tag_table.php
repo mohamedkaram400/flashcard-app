@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('flashcard_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tag_id')->constrained('tags')->cascadeOnDelete();
-            $table->foreignId('flashcard_id')->constrained('falshcards')->cascadeOnDelete();
+            $table->foreignId('flashcard_id')->constrained('flashcards')->cascadeOnDelete();
             $table->timestamps();
         });
     }
