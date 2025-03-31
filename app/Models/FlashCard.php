@@ -31,6 +31,6 @@ class FlashCard extends Model
 
     public function tags() : BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'flashcard_tag');
+        return $this->belongsToMany(Tag::class, 'flashcard_tag', 'flashcard_id', 'tag_id');
     }
 }

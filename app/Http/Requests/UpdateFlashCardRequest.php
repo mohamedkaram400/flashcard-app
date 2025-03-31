@@ -27,6 +27,8 @@ class UpdateFlashCardRequest extends FormRequest
             'category_id'   => ['sometimes', 'nullable', 'integer', 'exists:categories,id'],
             'difficulty'    => ['sometimes', 'in:easy,medium,hard'], 
             'hint'          => ['sometimes', 'nullable', 'string', 'max:255'],
+            'tagIds'        => ['nullable', 'array'],
+            'tagIds.*'      => ['nullable', 'exists:tags,id'],
         ];
     }
 }

@@ -37,7 +37,9 @@ class FlashCardService
             'hint'        => $validData['hint'] ?? null,
         ]);
 
-        $this->AttachTags($validData, $flashCard);
+        if (!empty($validData['tagIds'])) {
+            $flashCard->tags()->sync($validData['tagIds']);
+        }
 
         return $this->ApiResponse('FlashCard created successfully', 201, $flashCard);
     }
@@ -50,6 +52,7 @@ class FlashCardService
         $flashCard = FlashCard::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
         return $this->ApiResponse('FlashCard retrieved successfully', 200, $flashCard);
     }
+
     /**
      * Update the specified resource in storage.
      */
@@ -61,16 +64,11 @@ class FlashCardService
 
         $flashCard->update($validData);
         
-        $this->AttachTags($validData, $flashCard);
+        if (!empty($validData['tagIds'])) {
+            $flashCard->tags()->sync($validData['tagIds']);
+        }
 
         return $this->ApiResponse('FlashCard updated successfully', 200, $flashCard);
-    }
-
-    protected function AttachTags($request, $flashCard)
-    {
-        if (!empty($validData['tags'])) {
-            $flashCard->tags()->sync($request->tags);
-        }
     }
 
     /**

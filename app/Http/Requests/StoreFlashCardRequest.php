@@ -27,7 +27,8 @@ class StoreFlashCardRequest extends FormRequest
             'category_id'   => ['required', 'integer', 'exists:categories,id'],
             'difficulty'    => ['required', 'in:easy,medium,hard'], 
             'hint'          => ['nullable', 'string', 'max:255'],
-            'tag_ids'       => ['nullable', 'array', 'string'],
+            'tagIds'        => ['nullable', 'array'],
+            'tagIds.*'      => ['nullable', 'exists:tags,id'],
         ];
     }
 }
